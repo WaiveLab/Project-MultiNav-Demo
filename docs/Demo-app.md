@@ -40,12 +40,15 @@ xcodebuild -project "MultiNav Demo.xcodeproj" -scheme "MultiNav Demo" \
   grid is neutral; only start (**S**) and end (**E**) markers are shown. Drag
   from S to adjacent intersections, continuing from the tip after lifting your
   finger. Segments snap to the street grid. You can also draw continuously.
-  Use **Undo** to remove the last segment or **Clear route** to restart drawing.
+  Use **Clear route** to restart drawing. The drawing screen has no instruction
+  text below the map and no Undo button.
   VoiceOver provides directional actions to extend the route.
 - The second checkmark submits the route, including an incomplete route if the
   user chooses. A pass requires the exact ordered route from start to end, not
   merely reaching the destination. The results show pass/fail, matched and drawn
   segments, and elapsed time from entering blind mode through submission.
+  Failed attempts also show the original overview with the correct route
+  highlighted and S/E markers. This preview appears only after submission.
 - **Finish** returns to visible exploration of the completed challenge's map
   after either outcome. Next map and a fresh blind challenge remain available.
 
@@ -107,8 +110,9 @@ Before showing the app, verify on an iPhone:
    intersection changes, with only the checkmark visible.
 3. Leave the map in an intersection view, tap the checkmark, and confirm the
    reconstruction is the corresponding overview with no original route shown.
-4. Draw a route over multiple drags, undo/clear, submit a correct route and a
-   different or incomplete route, and check the corresponding results.
+4. Draw a route over multiple drags, clear it, submit a correct route and a
+   different or incomplete route, and check the corresponding results. Confirm
+   only failed attempts show the correct-route map and that Finish remains reachable.
 5. Confirm Finish returns to exploration after both outcomes and the next blind
    attempt uses a different map with a fresh timer.
 6. Check VoiceOver, small/large devices, iPad rotation, background/resume, and

@@ -15,7 +15,7 @@ struct DemoRootView: View {
     var body: some View {
         Group {
             if session.challenge.phase == .results, let result = session.challenge.result {
-                DemoResultsView(result: result, onFinish: session.finish)
+                DemoResultsView(result: result, graph: session.graph, onFinish: session.finish)
             } else {
                 VStack(spacing: 0) {
                     header
@@ -62,8 +62,6 @@ struct DemoRootView: View {
                 }
                 .foregroundStyle(.white)
             } else if session.challenge.phase == .drawing {
-                iconButton("arrow.uturn.backward", label: "Undo last segment", action: session.undo)
-                    .disabled((session.draft?.path.count ?? 0) <= 1)
                 Text("Draw route").font(.headline)
                 Spacer()
                 iconButton("checkmark", label: "Check my route", action: session.submit)
@@ -147,18 +145,11 @@ struct DemoRootView: View {
     }
 
     private var drawingFooter: some View {
-        VStack(spacing: 8) {
-            Text(session.draft?.path.last == session.graph?.end
-                 ? "At the end. Tap the checkmark when you’re ready."
-                 : "Drag from S through the intersections to E. Lift and continue from your route’s tip.")
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-            Button("Clear route", action: session.clear)
-                .frame(minHeight: 44)
-                .disabled((session.draft?.path.count ?? 0) <= 1)
-        }
-        .padding(.horizontal)
-        .padding(.bottom, 4)
+        Button("Clear route", action: session.clear)
+            .frame(minHeight: 44)
+            .disabled((session.draft?.path.count ?? 0) <= 1)
+            .padding(.horizontal)
+            .padding(.bottom, 4)
     }
 
     private func iconButton(_ symbol: String, label: String, action: @escaping () -> Void) -> some View {
@@ -174,6 +165,7 @@ struct DemoRootView: View {
 
 private struct DemoResultsView: View {
     let result: DemoChallenge.Result
+    let graph: DemoRouteGraph?
     let onFinish: () -> Void
 
     private var elapsed: String {
@@ -188,7 +180,7 @@ private struct DemoResultsView: View {
                     .font(.system(size: 64))
                     .foregroundStyle(result.correct ? Color.green : Color.orange)
                     .accessibilityHidden(true)
-                Text(result.correct ? "Route matched!" : "Route didn’t match")
+                Text(result.correct ? "Route matched!" : "Route didnâ€™t match")
                     .font(.largeTitle.bold())
                     .multilineTextAlignment(.center)
                     .accessibilityAddTraits(.isHeader)
@@ -205,6 +197,16 @@ private struct DemoResultsView: View {
                 .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 20))
                 Text("Time includes blind exploration and route drawing.")
                     .font(.footnote).foregroundStyle(.secondary)
+                if !result.correct, let graph {
+                    VStack(spacing: 12) {
+                        Text("Correct route")
+                            .font(.headline)
+                            .accessibilityAddTraits(.isHeader)
+                        DemoCorrectRouteView(graph: graph)
+                            .frame(height: 360)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                }
                 Button("Finish", action: onFinish)
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
@@ -214,7 +216,7 @@ private struct DemoResultsView: View {
             .padding(28)
             .frame(maxWidth: .infinity)
         }
-        .defaultScrollAnchor(.center)
+        .defaultScrollAnchor(result.correct ? .center : .top)
     }
 
     private func stat(_ title: String, value: String) -> some View {

@@ -84,7 +84,45 @@ struct DemoDrawingView: View {
     }
 }
 
-/// Reconstruction never plays cues derived from the hidden route.
+/// Reveals the explored overview only after a failed submission. The static
+/// preview uses the original map styles and lets the results screen scroll.
+struct DemoCorrectRouteView: View {
+    let graph: DemoRouteGraph
+
+    var body: some View {
+        let configuration = MapAppearance.configuration(isZoomed: false)
+        GeometryReader { canvas in
+            let transform = DemoCanvasTransform(bounds: graph.document.bounds,
+                                                size: canvas.size, padding: configuration.canvasPadding)
+            ZStack {
+                TactileMapView(document: graph.document, configuration: configuration,
+                               feedbackPolicy: SilentDrawingFeedback())
+                Text("S")
+                    .position(transform.screenPoint(graph.nodes[graph.start]))
+                Text("E")
+                    .position(transform.screenPoint(graph.nodes[graph.end]))
+            }
+            .font(.system(size: 13, weight: .heavy))
+            .foregroundStyle(.black)
+            .allowsHitTesting(false)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("Correct route map")
+            .accessibilityValue(routeDirections)
+        }
+    }
+
+    private var routeDirections: String {
+        let directions = zip(graph.expectedPath, graph.expectedPath.dropFirst()).map { from, to in
+            let a = graph.nodes[from], b = graph.nodes[to]
+            if b.x > a.x { return "right" }
+            if b.x < a.x { return "left" }
+            return b.y > a.y ? "down" : "up"
+        }
+        return "From start, follow one street segment " + directions.joined(separator: ", then ") + " to the end."
+    }
+}
+
+/// Drawing and result previews are silent; the preview cannot resume exploration.
 @MainActor
 private final class SilentDrawingFeedback: FeedbackPolicy {
     func onEnter(element: any TactileMapElement, touchType: TouchType) {}
