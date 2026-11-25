@@ -34,21 +34,24 @@ xcodebuild -project "MultiNav Demo.xcodeproj" -scheme "MultiNav Demo" \
   top-left back arrow, the existing three-finger right swipe, or double-tap the
   detail's end marker to return to the overview.
 - **Blind mode** chooses a different map and starts the timer. The screen is
-  black with only the top-right checkmark visible. The covered map remains
-  interactive, including intersection views and the three-finger back gesture.
+  black with the top-right checkmark visible. In an intersection view, a white
+  top-left back arrow returns to the covered overview while staying in blind mode.
+  The covered map remains interactive, including the three-finger back gesture.
 - The first checkmark opens reconstruction of that same overview. The street
   grid is neutral; only start (**S**) and end (**E**) markers are shown. Drag
   from S to adjacent intersections, continuing from the tip after lifting your
   finger. Segments snap to the street grid. You can also draw continuously.
   Use **Clear route** to restart drawing. The drawing screen has no instruction
-  text below the map and no Undo button.
+  text below the map and no Undo button. The **Draw route** title is centered,
+  with the submission checkmark at the top right.
   VoiceOver provides directional actions to extend the route.
 - The second checkmark submits the route, including an incomplete route if the
   user chooses. A pass requires the exact ordered route from start to end, not
   merely reaching the destination. The results show pass/fail, matched and drawn
   segments, and elapsed time from entering blind mode through submission.
-  Failed attempts also show the original overview with the correct route
-  highlighted and S/E markers. This preview appears only after submission.
+  Failed attempts also show just the street grid and highlighted correct route,
+  without landmarks, intersection symbols, or start/end markers. This preview
+  appears only after submission.
 - **Finish** returns to visible exploration of the completed challenge's map
   after either outcome. Next map and a fresh blind challenge remain available.
 
@@ -107,7 +110,9 @@ Before showing the app, verify on an iPhone:
 
 1. Launch in airplane mode, explore, open an intersection, return, and change maps.
 2. Enter blind mode and confirm the entire map stays black during touches and
-   intersection changes, with only the checkmark visible.
+   intersection changes. The checkmark remains visible; intersection views also
+   show a white back arrow that returns to the overview without revealing it or
+   resetting the challenge timer.
 3. Leave the map in an intersection view, tap the checkmark, and confirm the
    reconstruction is the corresponding overview with no original route shown.
 4. Draw a route over multiple drags, clear it, submit a correct route and a

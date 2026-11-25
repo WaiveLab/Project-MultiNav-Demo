@@ -84,31 +84,27 @@ struct DemoDrawingView: View {
     }
 }
 
-/// Reveals the explored overview only after a failed submission. The static
-/// preview uses the original map styles and lets the results screen scroll.
+/// Shows only the street grid and correct route after a failed submission.
+/// The static preview uses the map's line styles and lets the results scroll.
 struct DemoCorrectRouteView: View {
     let graph: DemoRouteGraph
 
     var body: some View {
-        let configuration = MapAppearance.configuration(isZoomed: false)
-        GeometryReader { canvas in
-            let transform = DemoCanvasTransform(bounds: graph.document.bounds,
-                                                size: canvas.size, padding: configuration.canvasPadding)
-            ZStack {
-                TactileMapView(document: graph.document, configuration: configuration,
-                               feedbackPolicy: SilentDrawingFeedback())
-                Text("S")
-                    .position(transform.screenPoint(graph.nodes[graph.start]))
-                Text("E")
-                    .position(transform.screenPoint(graph.nodes[graph.end]))
+        let drawing = graph.drawingDocument(path: graph.expectedPath)
+        let routeOnly = TactileMapDocument(
+            bounds: drawing.bounds,
+            features: drawing.features.filter { feature in
+                if case .lineString = feature.geometry { return true }
+                return false
             }
-            .font(.system(size: 13, weight: .heavy))
-            .foregroundStyle(.black)
+        )
+        TactileMapView(document: routeOnly,
+                       configuration: MapAppearance.configuration(isZoomed: false),
+                       feedbackPolicy: SilentDrawingFeedback())
             .allowsHitTesting(false)
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("Correct route map")
             .accessibilityValue(routeDirections)
-        }
     }
 
     private var routeDirections: String {

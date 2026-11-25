@@ -55,6 +55,12 @@ struct DemoRootView: View {
     private var header: some View {
         HStack(spacing: 12) {
             if isBlind {
+                if session.isZoomed {
+                    iconButton("arrow.left", label: "Back to overview") {
+                        policy.stopAll()
+                        session.backToOverview()
+                    }
+                }
                 Spacer()
                 iconButton("checkmark", label: "Finish blind exploration and draw the route") {
                     policy.stopAll()
@@ -62,9 +68,17 @@ struct DemoRootView: View {
                 }
                 .foregroundStyle(.white)
             } else if session.challenge.phase == .drawing {
-                Text("Draw route").font(.headline)
-                Spacer()
-                iconButton("checkmark", label: "Check my route", action: session.submit)
+                ZStack {
+                    Text("Draw route")
+                        .font(.headline)
+                        .padding(.horizontal, 60)
+                        .accessibilityAddTraits(.isHeader)
+                    HStack {
+                        Spacer()
+                        iconButton("checkmark", label: "Check my route", action: session.submit)
+                    }
+                }
+                .frame(maxWidth: .infinity)
             } else {
                 if session.isZoomed {
                     iconButton("arrow.left", label: "Back to overview") {
@@ -180,7 +194,7 @@ private struct DemoResultsView: View {
                     .font(.system(size: 64))
                     .foregroundStyle(result.correct ? Color.green : Color.orange)
                     .accessibilityHidden(true)
-                Text(result.correct ? "Route matched!" : "Route didnâ€™t match")
+                Text(result.correct ? "Route matched!" : "Route didnÃ¢â‚¬â„¢t match")
                     .font(.largeTitle.bold())
                     .multilineTextAlignment(.center)
                     .accessibilityAddTraits(.isHeader)
