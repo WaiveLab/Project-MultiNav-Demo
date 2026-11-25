@@ -1,0 +1,5 @@
+.DS_Store
+.codex-validation/
+__pycache__/
+DerivedData/
+xcuserdata/

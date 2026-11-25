@@ -1,0 +1,344 @@
+{
+    "version": "1.0",
+    "type": "TactileMapDocument",
+    "metadata": {
+        "name": "Intersection Between Birch Street and Garden Avenue",
+        "buildingName": "Intersection Between Birch Street and Garden Avenue",
+        "floor": 1,
+        "scale": "1 unit = 1 foot",
+        "coordinate_unit": "feet",
+        "coordinateOrigin": "top-left",
+        "author": "WaiveLab",
+        "created": "2026-09-07"
+    },
+    "bounds": {
+        "width": 1600,
+        "height": 1600
+    },
+    "features": [
+        {
+            "id": "street0",
+            "type": "street",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        800,
+                        90
+                    ],
+                    [
+                        800,
+                        1510
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "street1",
+            "type": "street",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        90,
+                        800
+                    ],
+                    [
+                        1510,
+                        800
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw0",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        90
+                    ],
+                    [
+                        552.3255813953489,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "West sidewalk of Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw1",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        90
+                    ],
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "East sidewalk of Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw2",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ],
+                    [
+                        552.3255813953489,
+                        1510
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "West sidewalk of Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw3",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ],
+                    [
+                        1047.6744186046512,
+                        1510
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "East sidewalk of Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw4",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        90,
+                        552.3255813953489
+                    ],
+                    [
+                        552.3255813953489,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "North sidewalk of Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw5",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        90,
+                        1047.6744186046512
+                    ],
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "South sidewalk of Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw6",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ],
+                    [
+                        1510,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "North sidewalk of Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offsw7",
+            "type": "offRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ],
+                    [
+                        1510,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "South sidewalk of Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offcw0",
+            "type": "offRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        552.3255813953489
+                    ],
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "North crosswalk across Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offcw1",
+            "type": "offRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ],
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "East crosswalk across Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offcw2",
+            "type": "offRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ],
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "South crosswalk across Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "offcw3",
+            "type": "offRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        552.3255813953489
+                    ],
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "West crosswalk across Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "center0",
+            "type": "intersectionCenter",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    800,
+                    800
+                ]
+            },
+            "properties": {
+                "name": "center of intersection",
+                "level": 1,
+                "accessible": true
+            }
+        }
+    ]
+}

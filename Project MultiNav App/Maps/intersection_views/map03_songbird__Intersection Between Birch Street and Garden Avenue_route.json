@@ -1,0 +1,156 @@
+{
+    "version": "1.0",
+    "type": "TactileMapDocument",
+    "metadata": {
+        "name": "map03_songbird__Intersection Between Birch Street and Garden Avenue_route",
+        "buildingName": "Intersection Between Birch Street and Garden Avenue",
+        "floor": 1,
+        "scale": "1 unit = 1 foot",
+        "coordinate_unit": "feet",
+        "coordinateOrigin": "top-left",
+        "author": "WaiveLab",
+        "created": "2026-09-07"
+    },
+    "bounds": {
+        "width": 1600,
+        "height": 1600
+    },
+    "features": [
+        {
+            "id": "route0",
+            "type": "onRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        90,
+                        1047.6744186046512
+                    ],
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "On-route south sidewalk of Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "route1",
+            "type": "onRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        552.3255813953489,
+                        1047.6744186046512
+                    ],
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "On-route south crosswalk across Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "route2",
+            "type": "onRouteCrosswalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        1047.6744186046512
+                    ],
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "On-route east crosswalk across Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "route3",
+            "type": "onRouteSidewalk",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        1047.6744186046512,
+                        552.3255813953489
+                    ],
+                    [
+                        1047.6744186046512,
+                        90
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "On-route east sidewalk of Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "turn",
+            "type": "turn",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1047.6744186046512,
+                    1047.6744186046512
+                ]
+            },
+            "properties": {
+                "name": "Turn left",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "start",
+            "type": "start",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    90,
+                    1047.6744186046512
+                ]
+            },
+            "properties": {
+                "name": "Route enters from Garden Avenue",
+                "level": 1,
+                "accessible": true
+            }
+        },
+        {
+            "id": "end",
+            "type": "end",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1047.6744186046512,
+                    90
+                ]
+            },
+            "properties": {
+                "name": "Route continues on Birch Street",
+                "level": 1,
+                "accessible": true
+            }
+        }
+    ]
+}
